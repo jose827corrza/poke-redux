@@ -1,17 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
+import { useDispatch, useSelector } from 'react-redux';
+
+import { setPokemons } from '../actions';
 import { getPokemons } from '../api';
-import { AppPokemons } from '../App';
 import { PokemonList } from '../containers/PokemonList'
+import { PokemonsResponse } from '../types/PokemonTypes';
+
+export type AppPokemons = {
+    pokemons: PokemonsResponse[],
+    setPokemons: any
+  }
 
 export const Home = () => {
-    const [pokemons, setPokemons] = useState([]);
+    // const [pokemons, setPokemons] = useState([]);
+    const pokemons = useSelector((state: AppPokemons) => state.pokemons);
+    const dispatch = useDispatch();
     const [searchWord, setSearchWord] = useState('');
 
     useEffect(() => {
         async function fetchPokemons(){
             const data = await getPokemons();
-            setPokemons(data);
+            dispatch(setPokemons(data));
         }
         fetchPokemons();
     }, []);

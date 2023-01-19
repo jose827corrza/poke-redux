@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { PokemonCard } from '../components/PokemonCard'
-import { IPokemon } from '../types/PokemonTypes';
+import { IPokemon, PokemonsResponse } from '../types/PokemonTypes';
 
 interface Props {
     pokemons: IPokemon[]
@@ -9,6 +9,9 @@ type Pokemon = {
     name: String
     pokemons: any
 } & typeof defaultProps;
+
+
+  
 // {name, pokemons}: Pokemon props
 export const PokemonList:FC<Props> = ({ pokemons }) => {
   return (
