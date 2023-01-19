@@ -1,10 +1,17 @@
 import { HashRouter, Routes, Route} from 'react-router-dom';
-// import './App.css'
+import { connect } from 'react-redux';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Home } from './pages/Home';
+import { setPokemons as setPokemonsActions } from './actions';
+import { PokemonsResponse } from './types/PokemonTypes'
 
-function App() {
+export type AppPokemons = {
+  pokemons: PokemonsResponse[],
+  setPokemons: any
+}
+
+function App({pokemons, setPokemons}: AppPokemons) {
   
   return (
     <div className="w-full bg-gray-400 dark:bg-cyan-800">
@@ -20,4 +27,11 @@ function App() {
   )
 }
 
-export default App
+const mapStateToProps = (state: any) =>  ({
+  pokemons: state.pokemons,
+});
+const mapDispatchToProps = (dispatch: any) => ({
+  setPokemons: (value: PokemonsResponse[]) => dispatch(setPokemonsActions(value))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

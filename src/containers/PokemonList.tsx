@@ -12,7 +12,7 @@ type Pokemon = {
 // {name, pokemons}: Pokemon props
 export const PokemonList:FC<Props> = ({ pokemons }) => {
   return (
-    <div className='grid grid-cols-5 p-12 gap-4 '>
+    <div className='grid grid-cols-2 md:grid-cols-5 p-12 gap-4 '>
         {
             pokemons.map((pokemon) => {
                 return <PokemonCard 

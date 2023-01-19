@@ -1,6 +1,7 @@
-import React, { ReactHTMLElement, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { BsSearch } from 'react-icons/bs'
 import { getPokemons } from '../api';
+import { AppPokemons } from '../App';
 import { PokemonList } from '../containers/PokemonList'
 
 export const Home = () => {
@@ -26,7 +27,7 @@ export const Home = () => {
             Hello world!
             </h1> */}
             <input 
-                className='ml-5 rounded-md h-10 w-1/8 p-2 mr-2'
+                className='ml-5 rounded-md h-10 w-1/8 p-2 mr-2 border focus:outline-node focus:shadow-outline'
                 placeholder='Search your pokemon . . .'
                 value={searchWord}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) => {onSearch(event.target.value)}}
